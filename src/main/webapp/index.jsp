@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.google.gson.Gson" %>
 <%@ page import="com.google.gson.reflect.TypeToken" %>
-    
 <%@ page import="myPackage.Job" %>
 <%@ page import="java.util.List" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Job Portal</title>
     <link rel="stylesheet" href="style.css">
-    
-    
 </head>
 <body>
     <header>
@@ -38,17 +34,16 @@
 	                <option value="all">All Jobs</option>
 	                <option value="technical">Technical Jobs</option>
 	                <option value="management">Management Jobs</option>
-	                <option value="operations">Operational Jobs</option>
+	                <option value="operational">Operational Jobs</option>
 	            </select>
 	            <button type="submit">Search</button>
             </form>
         </div>
          <div id="search-results">
-        <% 
+        <%
             /* List<Job> jobs = (List<Job>) request.getAttribute("jobsData"); */
         		
         	String jobsDataJson = (String) request.getAttribute("jobsData");
-
         		// Deserialize the JSON string into a List<Job> using Gson
         		Gson gson = new Gson();
         		List<Job> jobs = gson.fromJson(jobsDataJson, new TypeToken<List<Job>>(){}.getType());
@@ -61,8 +56,8 @@
                 <p><strong>Location:</strong> <%= job.getLocation() %></p>
                 <p><strong>Description:</strong> <%= job.getDescription() %></p>
                 <p><strong>Type of Job:</strong> <%= job.getTypeOfJob() %></p>
-                <%-- <p><strong>Requirements:</strong> 
-                    <% 
+                <%-- <p><strong>Requirements:</strong>
+                    <%
                         for (String requirement : job.getRequirements()) {
                             out.print(requirement);
                             out.print(", ");
